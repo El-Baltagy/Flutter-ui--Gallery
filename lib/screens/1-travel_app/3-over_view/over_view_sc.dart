@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test/shared/manager/app_string.dart';
+import '../../../shared/widget/divider.dart';
+import '../utils.dart';
 
-import '../../shared/widget/divider.dart';
-import '../../shared/widget/preview/utils.dart';
 
 class OverViewSC extends StatelessWidget {
   const OverViewSC({super.key});
@@ -56,7 +56,7 @@ class OverViewSC extends StatelessWidget {
                             maxWidth: 326*fem,
                           ),
                           child: Text(
-                            AppString.aboutContent,
+                            TravelString.aboutContent,
                             style: SafeGoogleFont (
                               'SF Pro Text',
                               fontSize: 14*ffem,

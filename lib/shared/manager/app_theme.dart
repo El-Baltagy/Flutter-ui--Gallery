@@ -6,16 +6,18 @@ import 'app_color.dart';
    final lightTheme = ThemeData(
       brightness: Brightness.light,
       fontFamily: 'Poppins',
+     platform: TargetPlatform.iOS,
        // primarySwatch: primaryColor,
-      iconTheme:IconThemeData(
+      iconTheme:const IconThemeData(
         color: primaryColor
       ) ,
       primaryColor: primaryColor,
       primarySwatch: primaryColor,
       scaffoldBackgroundColor: lightBackgroundColor,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      appBarTheme:  AppBarTheme(
+      appBarTheme:  const AppBarTheme(
         backgroundColor: Colors.transparent,
+        elevation: 0,foregroundColor: Colors.transparent,
         iconTheme: IconThemeData(color:Colors.black ),
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent,
               statusBarIconBrightness:Brightness.dark,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../shared/manager/app_string.dart';
-import '../../shared/widget/divider.dart';
-import '../../shared/widget/preview/utils.dart';
+import '../utils.dart';
+import '../../../shared/manager/app_string.dart';
+import '../../../shared/widget/divider.dart';
 
 
 class ReviewSc extends StatelessWidget {
@@ -18,7 +17,7 @@ class ReviewSc extends StatelessWidget {
       children: [
 
         //build comment
-        ...commentLis.asMap().entries.map((e) => BuildComment(fem: fem, ffem: ffem, comment: e.value,)).toList(),
+        ...TravelString.commentLis.asMap().entries.map((e) => BuildComment(fem: fem, ffem: ffem, comment: e.value,)).toList(),
 
 
       ],

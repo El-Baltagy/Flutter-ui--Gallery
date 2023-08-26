@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test/shared/manager/app_color.dart';
-import 'package:test/shared/widget/preview/utils.dart';
-import '../../controller/cubit/home/cubit.dart';
-import '../../controller/cubit/home/states.dart';
-import '../../shared/widget/preview/entrance_fader.dart';
-import '../4-over_view/over_view_sc.dart';
-import '../5-photo/photo_sc.dart';
-import '../6-review/review_sc.dart';
+import '../../../controller/cubit/travel/cubit.dart';
+import '../../../controller/cubit/travel/states.dart';
+import '../../../shared/widget/app_bar.dart';
+import '../../../shared/widget/entrance_fader.dart';
+import '../3-over_view/over_view_sc.dart';
+import '../4-photo/photo_sc.dart';
+import '../5-review/review_sc.dart';
+import '../utils.dart';
 
 
 
@@ -21,7 +22,12 @@ class LayOutSc extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: BlocBuilder<homeCubit,homeStates>(
+      appBar: PreferredSize(
+        preferredSize: Size(double.maxFinite, 30.h),
+        child: BuildAppBar()
+        
+      ),
+      body: BlocBuilder<TravelCubit,TravelStates>(
         builder: (context, state) {
           final h=MediaQuery.of(context).size.height;
           double baseWidth = 375;
@@ -243,9 +249,9 @@ class LayOutSc extends StatelessWidget {
                         ),
                       ],
                       body:
-                      BlocBuilder<homeCubit,homeStates>(builder:
+                      BlocBuilder<TravelCubit,TravelStates>(builder:
                       (context, state) {
-                        final cubit=BlocProvider.of<homeCubit>(context,listen: false);
+                        final cubit=BlocProvider.of<TravelCubit>(context,listen: false);
                       return  PageView.builder(
                             onPageChanged: (value) {
                               DefaultTabController.of(context).animateTo(value);
@@ -255,7 +261,7 @@ class LayOutSc extends StatelessWidget {
                             itemBuilder: (context, index) =>pages[cubit.currentIndex]);
                       })
                   ),
-                  BlocProvider.of<homeCubit>(context).currentIndex==0?
+                  BlocProvider.of<TravelCubit>(context).currentIndex==0?
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal:18*fem),
                     child: Container(
@@ -331,7 +337,7 @@ class LayOutSc extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          BlocProvider.of<homeCubit>(context).currentIndex==1?'Upload a photo':'Write a review',
+                          BlocProvider.of<TravelCubit>(context).currentIndex==1?'Upload a photo':'Write a review',
                           style: SafeGoogleFont (
                             'SF Pro Display',
                             fontSize: 16*ffem,
@@ -396,7 +402,7 @@ class buildTabBar extends StatelessWidget {
                 ),
               )),
       onTap: (index){
-        BlocProvider.of<homeCubit>(context).changIndex(index);
+        BlocProvider.of<TravelCubit>(context).changIndex(index);
       },
     );
   }

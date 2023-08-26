@@ -5,33 +5,32 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:test/shared/manager/app_assets.dart';
 import 'package:test/shared/manager/app_color.dart';
-import '../../shared/manager/app_methods.dart';
-import '../../shared/network/local/cash_helper.dart';
-import '../2-on_boarding_sc/on_boarding.dart';
-import '../3-layout/lay_out.dart';
+
+import '../../../shared/manager/app_methods.dart';
+import '../2-layout/lay_out.dart';
 
 
 
-class SplashSc extends StatefulWidget {
-  const SplashSc({Key? key}) : super(key: key);
+class SplashTravelSC extends StatefulWidget {
+  const SplashTravelSC({Key? key}) : super(key: key);
 
   @override
-  State<SplashSc> createState() => _SplashScState();
+  State<SplashTravelSC> createState() => _SplashTravelSCState();
 }
 
-class _SplashScState extends State<SplashSc> {
+class _SplashTravelSCState extends State<SplashTravelSC> {
   Timer? _timer;
 
   _startDelay() {
     _timer = Timer(const Duration(seconds: 4,milliseconds: 500), _goNext);
   }
   _goNext() {
-    bool? _onBoarding=CashHelper.getBoolean(key:'onBoarding');
-    if (_onBoarding==null) {
-      GoPage.navigateAndFinish(context, OnBoardingSC());
-    }  else{
+    // bool? _onBoarding=CashHelper.getBoolean(key:'onBoarding');
+    // if (_onBoarding==null) {
+    //   GoPage.navigateAndFinish(context, OnBoardingSC());
+    // }  else{
       GoPage.navigateAndFinish(context, LayOutSc());
-    }
+    // }
 
   }
   @override
